@@ -23,6 +23,14 @@ public class RegistrationPage {
     private SelenideElement hobbyCheckbox = $("#hobbiesWrapper");
     private SelenideElement pictureInput = $("#uploadPicture");
     private SelenideElement currentAddressInput = $("#currentAddress");
+    private SelenideElement dateOfBirthInput = $("#dateOfBirthInput");
+    private SelenideElement submitButton =$("#submit");
+    private SelenideElement stateInput = $("#state");
+    private SelenideElement statesList =$("#stateCity-wrapper");
+    private SelenideElement cityInput =$("#city");
+    private SelenideElement citiesList =$("#stateCity-wrapper");
+
+
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -67,7 +75,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setBirthDate(String day, String month, String year){
-        $("#dateOfBirthInput").click();
+        dateOfBirthInput.click();
         calendar.setDate(day, month, year);
 
         return this;
@@ -92,37 +100,37 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState (String value){
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText(value)).click();
+        stateInput.click();
+        statesList.$(byText(value)).click();
 
         return this;
     }
 
     public RegistrationPage setCity (String value){
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText(value)).click();
+        cityInput.click();
+        citiesList.$(byText(value)).click();
 
         return this;
     }
 
     public RegistrationPage submit (){
-        $("#submit").click();
+        submitButton.click();
 
         return this;
     }
 
     public RegistrationPage verifyResult(Student student) {
         resultModal.verifyAppears()
-                .verifyResult("Student Name", student.firstName + " " + student.lastName)
-                .verifyResult("Student Email", student.userEmail)
-                .verifyResult("Gender", student.gender)
-                .verifyResult("Mobile", student.userNumber)
-                .verifyResult("Date of Birth", student.dateOfBirthFullFormat)
-                .verifyResult("Subjects", student.subject)
-                .verifyResult("Hobbies", student.hobby)
-                .verifyResult("Picture", student.imgFileName)
-                .verifyResult("Address", student.currentAddress)
-                .verifyResult("State and City", student.state + " " + student.city);
+                .verifyValueInTable("Student Name", student.firstName + " " + student.lastName)
+                .verifyValueInTable("Student Email", student.userEmail)
+                .verifyValueInTable("Gender", student.gender)
+                .verifyValueInTable("Mobile", student.userNumber)
+                .verifyValueInTable("Date of Birth", student.dateOfBirthFullFormat)
+                .verifyValueInTable("Subjects", student.subject)
+                .verifyValueInTable("Hobbies", student.hobby)
+                .verifyValueInTable("Picture", student.imgFileName)
+                .verifyValueInTable("Address", student.currentAddress)
+                .verifyValueInTable("State and City", student.state + " " + student.city);
 
         return this;
     }
