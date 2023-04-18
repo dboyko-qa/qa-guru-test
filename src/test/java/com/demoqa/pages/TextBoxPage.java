@@ -1,8 +1,6 @@
 package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demoqa.tests.Student;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -37,16 +35,11 @@ public class TextBoxPage {
         return this;
     }
 
-    private void verifyResultLine(String key, String value){
+    public TextBoxPage verifyResult(String key, String value){
         $("#output").$("#" + key).shouldHave(text(value));
+        return this;
     }
 
-    public TextBoxPage verifyResult(Student student) {
-        verifyResultLine("name", student.lastName);
-        verifyResultLine("email", student.userEmail);
-        verifyResultLine("currentAddress", student.currentAddress);
-        verifyResultLine("permanentAddress", student.currentAddress);
-        return this;
-}
+
 
 }
