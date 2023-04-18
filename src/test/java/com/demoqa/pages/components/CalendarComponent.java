@@ -1,6 +1,5 @@
 package com.demoqa.pages.components;
 
-import java.text.Format;
 
 import static com.codeborne.selenide.Selenide.*;
 
