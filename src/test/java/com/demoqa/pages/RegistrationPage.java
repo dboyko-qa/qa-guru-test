@@ -3,8 +3,6 @@ package com.demoqa.pages;
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
 import com.demoqa.pages.components.ResultModal;
-import com.demoqa.tests.Student;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -34,9 +32,13 @@ public class RegistrationPage {
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        removeFooterBanner();
+        return this;
+    }
+
+    public RegistrationPage removeFooterBanner(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-
         return this;
     }
 
@@ -119,19 +121,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage verifyResult(Student student) {
-        resultModal.verifyAppears()
-                .verifyValueInTable("Student Name", student.firstName + " " + student.lastName)
-                .verifyValueInTable("Student Email", student.userEmail)
-                .verifyValueInTable("Gender", student.gender)
-                .verifyValueInTable("Mobile", student.userNumber)
-                .verifyValueInTable("Date of Birth", student.dateOfBirthFullFormat)
-                .verifyValueInTable("Subjects", student.subject)
-                .verifyValueInTable("Hobbies", student.hobby)
-                .verifyValueInTable("Picture", student.imgFileName)
-                .verifyValueInTable("Address", student.currentAddress)
-                .verifyValueInTable("State and City", student.state + " " + student.city);
+    public RegistrationPage verifyModalAppears(){
+        resultModal.verifyAppears();
+        return this;
+    }
 
+    public RegistrationPage verifyResult(String key, String value) {
+        resultModal.verifyValueInTable(key, value);
         return this;
     }
 }
