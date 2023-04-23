@@ -3,8 +3,6 @@ package com.demoqa.tests;
 import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.*;
-
 public class RegistrationTests extends TestBase {
 
     @Test
@@ -39,7 +37,6 @@ public class RegistrationTests extends TestBase {
                 .verifyResult("Address", student.currentAddress)
                 .verifyResult("State and City", student.state + " " + student.city);
 
-        sleep(5000);
 
     }
 }
