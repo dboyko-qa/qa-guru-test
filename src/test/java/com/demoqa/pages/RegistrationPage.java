@@ -2,7 +2,7 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
-import com.demoqa.pages.components.ResultModal;
+import com.demoqa.pages.components.ResultModalComponent;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 public class RegistrationPage {
 
     private CalendarComponent calendar = new CalendarComponent();
-    private ResultModal resultModal = new ResultModal();
+    private ResultModalComponent resultModalComponent = new ResultModalComponent();
     private SelenideElement firstNameInput = $("#firstName");
     private SelenideElement lastNameInput = $("#lastName");
     private SelenideElement userEmailInput = $("#userEmail");
@@ -122,12 +122,12 @@ public class RegistrationPage {
     }
 
     public RegistrationPage verifyModalAppears(){
-        resultModal.verifyAppears();
+        resultModalComponent.verifyAppears();
         return this;
     }
 
     public RegistrationPage verifyResult(String key, String value) {
-        resultModal.verifyValueInTable(key, value);
+        resultModalComponent.verifyValueInTable(key, value);
         return this;
     }
 }
