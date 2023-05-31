@@ -1,11 +1,13 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationTests extends TestBase {
 
     @Test
+    @Tag("Registration")
     public void successfulRegistrationTest() {
 
         Student student = new Student();
