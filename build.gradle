@@ -54,3 +54,9 @@ task registration_test(type: Test) {
         includeTags("Registration")
     }
 }
+
+task remote_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("Remote")
+    }
+}
