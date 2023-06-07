@@ -18,11 +18,11 @@ public class RemoteTestBase {
     @BeforeAll
     static void beforeAll(){
         //get all system properties
-        String browser = System.getProperty("BROWSER");
-        String browserVersion = System.getProperty("BROWSERVER");
-        String browserSize = System.getProperty("BROWSERSIZE");
-        String webDriverHost = System.getProperty("DWHOST");
-        String baseUrl = System.getProperty("SITE");
+        String browser = System.getProperty("browser");
+        String browserVersion = System.getProperty("browserVersion");
+        String browserSize = System.getProperty("browserSize");
+        String webDriverHost = System.getProperty("webDriverHost");
+        String baseUrl = System.getProperty("baseUrl");
 
         Configuration.baseUrl="https://" + baseUrl;
         Configuration.pageLoadStrategy="eager";
