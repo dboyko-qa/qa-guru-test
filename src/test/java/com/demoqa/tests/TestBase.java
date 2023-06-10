@@ -27,7 +27,7 @@ public class TestBase {
         String browserSize = config.getBrowserSize();
         String webDriverHost = config.getWebDriverHost();
 
-        Configuration.baseUrl="https://" + baseUrl;
+        Configuration.baseUrl= baseUrl;
         Configuration.pageLoadStrategy="eager";
         Configuration.browser = browser.toString();
         Configuration.browserSize = browserSize;
@@ -35,7 +35,7 @@ public class TestBase {
         switch (env){
             case REMOTE:
             {
-                Configuration.remote = String.format("https://user1:1234@%s/wd/hub", webDriverHost);
+                Configuration.remote = String.format("https://%s/wd/hub", webDriverHost);
                 Configuration.browserVersion = browserVersion;
 
             }
